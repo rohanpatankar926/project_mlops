@@ -50,3 +50,10 @@ our code into github<br>
     ii)-->dataframe to json converted and from the we called the pymongo client and <br>
     then we pushed our complete data to mongodb<br>
     iii)--> we got all the data to mongodb-cloud in collections section <br>
+
+### DATA INGESTION PIPELINE <br>
+1--> `sensor` folder created <br>
+2--> `components` consists of pipelines <br>
+3--> `utils.py` it is for utility handling<br>
+4-->`config.py` it is for configuration handling<br>
+5-->`entity` folder consists of all the entities <br>
