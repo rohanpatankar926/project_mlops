@@ -24,11 +24,23 @@ our code into github<br>
 `git branch -M branch-name`<br>
 `git remote origin <git_url>`<br>
 `git push origin branch-name`<br>
-
-
-retreiving the data or code from git repository(any) 
+##### retreiving the data or code from git repository(any) 
 `git clone <giturl>` 
 
+## Mongodb account creation
+<a href="https://account.mongodb.com/account/login?n=%2Fv2%2F6383752f26290660e06cd064&nextHash=%23metrics%2FreplicaSet%2F6383756aa00db149ac3c1cf1%2Fexplorer">Mongodb url login
+</a><br>
+1--> create new project<br>
+    i) give new project name<br>
+    ii)create project<br>
+2--> Click on Build a database <br>
+    i)shared database (righter most) <br>
+    ii)last section named cluster change name to `sensor-database`<br>
+    iii)give username and password<br>
+    iv)ip address (Add my current ip address click)<br>
+    v)Click on Finish and close<br>
+3--->Connect <br>
+    i)Connect to vscode<br>
 
 ### DUMP DATA TO MONGODB<br>
 1-->download the data and store in local system<br>
