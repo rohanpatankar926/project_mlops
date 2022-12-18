@@ -1,10 +1,11 @@
 pandas
 numpy
 matplotlib
-sklearn
+scikit-learn
 scipy
 statsmodels
 seaborn
 pymongo
 python-dotenv
 logger
+xgboost
