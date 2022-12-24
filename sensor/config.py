@@ -8,6 +8,8 @@ from dotenv import load_dotenv
 print("Environment Variables is being called")
 load_dotenv()
 
+TARGET_COLUMN="class"
+
 @dataclass
 class EnvironmentVariable(object):
     mongodb_url:str=os.getenv("MONGODB_CREDENTIALS")

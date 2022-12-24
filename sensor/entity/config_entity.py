@@ -48,3 +48,16 @@ class DataIngestionConfig:
             return self.__dict__
         except Exception as e:
             raise SensorException(e,sys)
+
+    
+class DataValidationConfig(object):
+    def __init__(self,training_pipeline_config:TrainingPipelineConfig):
+            try:
+                self.database_name="sensor"
+                self.collection_name="sensor-data"
+                self.data_validation_config=os.path.join(training_pipeline_config.artifact_dir,"data-validation")
+                self.report_file_path=os.path.join(self.data_validation_config,"report.yaml")
+                self.threshold_missing_value=0.7
+                self.base_file_path=os.path.join("aps_failure_training_set1.csv")
+            except Exception as e:
+                raise SensorException(e,sys)
