@@ -73,8 +73,8 @@ class DataTransformation:
             utils.save_numpy_array_data(file_path=self.data_transformation_config.tranformed_train_path,data=train_arr)
             utils.save_numpy_array_data(file_path=self.data_transformation_config.transformed_test_path,data=test_arr)
 
-            utils.save_object(file_path=self.data_transformation_config.transform_object_path,obj=transformation_pipeline)
-            utils.save_object(file_path=self.data_transformation_config.target_encoder_path,obj=label_encoder)
+            utils.save_object(model=self.data_transformation_config.transform_object_path,obj=transformation_pipeline)
+            utils.save_object(model=self.data_transformation_config.target_encoder_path,obj=label_encoder)
 
 
             data_tranformation_artifacts=artifacts_entity.DataTransformationArtifact(
