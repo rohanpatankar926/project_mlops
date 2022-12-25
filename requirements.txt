@@ -1,5 +1,6 @@
 pandas
 numpy
+dill
 matplotlib
 scikit-learn
 scipy
@@ -9,3 +10,4 @@ pymongo
 python-dotenv
 logger
 xgboost
+imblearn

@@ -12,11 +12,16 @@ class DataValidationArtifact:
 
 @dataclass
 class DataTransformationArtifact:
-    pass
+    transformed_object_path:str 
+    transformed_train_path:str
+    transformed_test_path:str
+    target_encoder_path:str
 
 @dataclass
 class ModelTrainerArtifact:
-    pass
+    model_path:str
+    f1_score_train:float
+    f1_score_test:float
 
 @dataclass
 class ModelEvaluatorArtifact:

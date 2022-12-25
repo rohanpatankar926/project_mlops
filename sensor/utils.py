@@ -2,6 +2,8 @@ import pandas as pd
 import os,sys
 sys.path.append(os.getcwd())
 import yaml
+import numpy as np
+import dill
 from sensor.logger import logging
 from sensor.config import mongo_client
 from sensor.exception import SensorException
@@ -46,5 +48,35 @@ def convert_columns_float(df:pd.DataFrame,exclude_columns:list):
                 except:
                     pass
         return df
+    except Exception as e:
+        raise SensorException(e,sys)
+
+def save_numpy_array_data(file_path:str,data:np.array):
+    try:
+        dir_path=os.path.dirname(file_path)
+        os.makedirs(dir_path,exist_ok=True)
+        with open(file_path,"w") as file_obj:
+            np.save(file_obj,data)
+    except Exception as e:
+        raise SensorException(e,sys)
+
+
+def load_numpy_array_data(file_path:str):
+    try:
+        logging.info(f"Loading the numpy array data from {file_path}")
+        with open(file_path,"rb") as file_obj:
+            logging.info(f"Loaded the numpy array data successfully from {file_path}")
+            return np.load(file_obj)
+    except Exception as e:
+        raise SensorException(e,sys)
+
+    
+def save_object(model:str,obj:object):
+    try:
+        logging.info(f"Saving the object at {model}")
+        os.makedirs(os.path.dirname(model),exist_ok=True)
+        with open(model,"wb") as file_obj:
+            dill.dump(obj,file_obj)
+        logging.info(f"Object saved successfully at {model}")
     except Exception as e:
         raise SensorException(e,sys)
