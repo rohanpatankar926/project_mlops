@@ -80,3 +80,12 @@ def save_object(model:str,obj:object):
         logging.info(f"Object saved successfully at {model}")
     except Exception as e:
         raise SensorException(e,sys)
+
+def load_object(file_path:str):
+    try:
+        if not os.path.exists(file_path):
+            raise SensorException(f"File not found at {file_path}")
+        with open(file_path,"rb") as file_obj:
+            return dill.load(file_obj)
+    except Exception as e:
+        raise SensorException(e,sys)

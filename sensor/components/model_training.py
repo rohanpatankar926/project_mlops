@@ -61,7 +61,7 @@ class ModelTrainer:
             utils.save_object(model=self.model_trainer_config.model_path,obj=model)
             logging.info("saving the object model completed")
             model_trainer_artifact=artifacts_entity.ModelTrainerArtifact(model_path=self.model_trainer_config.model_path,
-                                                                        f1_score=f1_score_test,
+                                                                        f1_score_test=f1_score_test,
                                                                         f1_score_train=f1_score_train)
             logging.info("Model Trainer artifact --> {model_trainer_artifact}")
             return model_trainer_artifact

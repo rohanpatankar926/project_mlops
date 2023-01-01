@@ -86,3 +86,16 @@ class ModelTrainerConfig(object):
             self.overfitting_threshold=0.1
         except Exception as e:
             raise SensorException(e,sys)
+
+class ModelEvaluationConfig(object):
+    def __init__(self,training_pipeline_config:TrainingPipelineConfig):
+        self.change_threshold=0.1
+
+class ModelPusherConfig:
+    def __init__(self,training_pipeline_config:TrainingPipelineConfig):
+        self.model_pusher_dir=os.path.join(training_pipeline_config.artifact_dir,"model-pusher")
+        self.save_model_dir=os.path.join("saved-models")
+        self.pusher_model_dir=os.path.join(self.model_pusher_dir,MODEL_FILE_NAME)
+        self.pusher_model_path=os.path.join(self.pusher_model_dir,TRANSFORMER_OBJECT_FILE_NAME) 
+        self.pusher_transformer_path=os.path.join(self.pusher_model_dir,TARGET_ENCODER_OBJECT_FILE_NAME)
+        self.pusher_target_encoder_path=os.path.join(self.pusher_model_dir,TARGET_ENCODER_OBJECT_FILE_NAME)
