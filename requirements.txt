@@ -11,3 +11,4 @@ python-dotenv
 logger
 xgboost
 imblearn
+pip-chill
