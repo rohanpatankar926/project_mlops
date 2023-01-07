@@ -57,3 +57,38 @@ our code into github<br>
 3--> `utils.py` it is for utility handling<br>
 4-->`config.py` it is for configuration handling<br>
 5-->`entity` folder consists of all the entities <br>
+
+
+### DATA VAIDATION PIPELINE 
+1-->drop_missing_values_columns
+2-->is_required_columns_exists -> it validates all the data columns by comparing with base dataframe
+3-->data_drift--> checking and validating hypothesis testing based on the 2 different dataframe
+4-->intialization of the pipeline
+
+### DATA TRANSFORMATION PIPELINE
+Refer to notebook 5 experiments so we will take the best experiment value from that initialized notebook
+1-->Robust scaler for handling outliers and simple imputer object with strategy contant and combining to Pipeline module
+2-->applyng the SmoteTomek for oversampling the data target class
+3--> Label encoder for my target 
+4-->make npz i)-train.npz
+             ii)-test.npz
+            iii)-transformer.pkl
+            iv)-targetencoder.pkl
+Saving the seriallized object into artifacts folder
+
+### DATA TRAINING PIPELINE
+1-->transformed data from the `data transformation pipeline`
+2-->XGBClassifier TAINING without HP tuning
+3-->checking for overfitting for the model
+4--> saving the serialized pkl object into artifacts directory
+
+### MODEL EVALUATION PIPELINE
+Main aim is to get the latest directory from the artifacts directory 
+compare the previous model score with latest model score THATS IT
+
+### MODEL PUSHER PIPELINE
+we will just store the latest model into our `saved_models/counter/model/model.pkl`
+
+### BATCH PREDICTION PIPELINE
+input the filename.csv into my pipeline so that i will be getting a data prediction and save the predicted csv file 
+
