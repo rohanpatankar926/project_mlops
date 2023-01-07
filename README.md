@@ -83,12 +83,11 @@ Saving the seriallized object into artifacts folder
 4--> saving the serialized pkl object into artifacts directory
 
 ### MODEL EVALUATION PIPELINE
-Main aim is to get the latest directory from the artifacts directory 
+In this pipeline the main aim is to get the latest directory from the artifacts directory 
 compare the previous model score with latest model score THATS IT
 
 ### MODEL PUSHER PIPELINE
-we will just store the latest model into our `saved_models/counter/model/model.pkl`
+This pipeline is responsible for storing the latest model,latest encoder file into `saved_models/counter/model/model.pkl`
 
 ### BATCH PREDICTION PIPELINE
-input the filename.csv into my pipeline so that i will be getting a data prediction and save the predicted csv file 
-
+According to the user input we can able to upload the `filename.csv` file in which we can able to predict the class of the batch data and save it as the local file.
