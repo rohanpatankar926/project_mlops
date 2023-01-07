@@ -39,8 +39,8 @@ def start_training_pipeline():
 
         #model_training
         model_training_config=config_entity.ModelTrainerConfig(training_pipeline_config)
-        model_training=model_training.ModelTrainer(model_trainer_config=model_training_config,data_trasformation_artifact=data_transformation_artifact)
-        model_training_artifact=model_training.initiate_model_trainer()
+        model_training_=model_training.ModelTrainer(model_trainer_config=model_training_config,data_trasformation_artifact=data_transformation_artifact)
+        model_training_artifact=model_training_.initiate_model_trainer()
         print("MODEL TRAINING ARTIFACT")
         print(model_training_artifact)
         
@@ -50,7 +50,7 @@ def start_training_pipeline():
         data_ingestion_artifact=data_ingestion_artifact,
         data_transformation_artifact=data_transformation_artifact,
         model_trainer_artifact=model_training_artifact)
-        model_eval_artifact = model_eval.initiate_model_evaluation()
+        model_eval_artifact = model_eval_.initiate_model_evaluation()
 
         #model pusher
         model_pusher_config=config_entity.ModelPusherConfig(training_pipeline_config=training_pipeline_config)
