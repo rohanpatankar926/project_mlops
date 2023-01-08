@@ -14,4 +14,4 @@ RUN airflow users create -e rohanpatankar926@gmail.com -f rohan -l patankar -p a
 RUN chmod 777 start.sh
 RUN apt update -y && apt install awscli -y
 ENTRYPOINT [ "python" ]
-CMD [" main.py "]
+CMD [ "main.py" ]
