@@ -5,7 +5,7 @@ import sys
 
 print(__name__)
 
-input_func_name=input("Please enter the function name for training or batch pred: ")
+input_func_name="training"
 
 def main():
     try:

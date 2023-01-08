@@ -48,13 +48,13 @@ def start_training_pipeline():
         model_eval_config = config_entity.ModelEvaluationConfig(training_pipeline_config=training_pipeline_config)
         model_eval_  = model_eval.ModelEvaluation(model_eval_config=model_eval_config,
         data_ingestion_artifact=data_ingestion_artifact,
-        data_transformation_artifact=data_transformation_artifact,
+        data_trasnformation_artifact=data_transformation_artifact,
         model_trainer_artifact=model_training_artifact)
         model_eval_artifact = model_eval_.initiate_model_evaluation()
 
         #model pusher
         model_pusher_config=config_entity.ModelPusherConfig(training_pipeline_config=training_pipeline_config)
-        model_pusher_=model_pusher.ModelPusher(model_pusher_config=model_pusher_config,model_eval_artifact=model_eval_artifact)
+        model_pusher_=model_pusher.ModelPusher(model_pusher_config=model_pusher_config,data_transformation_artifact=data_transformation_artifact,model_trainer_artifact=model_training_artifact)
         model_pusher_.initiate_model_pusher()
     except Exception as e:
         raise SensorException(e,sys)
