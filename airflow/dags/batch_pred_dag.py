@@ -6,9 +6,6 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.operators.bash import BashOperator
 
-
-
-
 def download_files(**kwargs):
     global bucket_name
     bucket_name="sensor-data"
@@ -47,3 +44,4 @@ with DAG(
     success=BashOperator(task_id="success",bash_command=bash_success)
 
     download_input_files>>generate_prediction_files>>sync_prediction_files>>success
+
