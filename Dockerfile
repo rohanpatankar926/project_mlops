@@ -10,7 +10,7 @@ ENV AIRFLOW_HOME=/sensor/airflow
 ENV AIRFLOW__CORE__DAGBAG_IMPORT_TIMEOUT=1000
 ENV AIRFLOW__CORE__ENABLE_XCOM_PICKLING=True
 RUN airflow db init
-RUN airflow users create -e rohanpatankar926@gmail.com --f rohan -l patankar -u rohan -p airflow
+RUN airflow users create -e rohanpatankar926@gmail.com -f rohan -l patankar -u rohan -p airflow
 RUN chmod 777 start.sh
 RUN apt update -y && apt install awscli -y
 ENTRYPOINT [ "python" ]
