@@ -12,3 +12,5 @@ logger
 xgboost
 imblearn
 pip-chill
+apache-airflow
+json
