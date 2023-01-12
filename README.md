@@ -59,35 +59,35 @@ our code into github<br>
 5-->`entity` folder consists of all the entities <br>
 
 
-### DATA VAIDATION PIPELINE 
-1-->drop_missing_values_columns
-2-->is_required_columns_exists -> it validates all the data columns by comparing with base dataframe
-3-->data_drift--> checking and validating hypothesis testing based on the 2 different dataframe
-4-->intialization of the pipeline
+### DATA VAIDATION PIPELINE <br>
+1-->drop_missing_values_columns<br>
+2-->is_required_columns_exists -> it validates all the data columns by comparing with base dataframe<br>
+3-->data_drift--> checking and validating hypothesis testing based on the 2 different dataframe<br>
+4-->intialization of the pipeline<br>
 
-### DATA TRANSFORMATION PIPELINE
-Refer to notebook 5 experiments so we will take the best experiment value from that initialized notebook
-1-->Robust scaler for handling outliers and simple imputer object with strategy contant and combining to Pipeline module
-2-->applyng the SmoteTomek for oversampling the data target class
-3--> Label encoder for my target 
-4-->make npz i)-train.npz
-             ii)-test.npz
-            iii)-transformer.pkl
-            iv)-targetencoder.pkl
-Saving the seriallized object into artifacts folder
+### DATA TRANSFORMATION PIPELINE<br>
+Refer to notebook 5 experiments so we will take the best experiment value from that initialized notebook<br>
+1-->Robust scaler for handling outliers and simple imputer object with strategy contant and combining to Pipeline module<br>
+2-->applyng the SmoteTomek for oversampling the data target class<br>
+3--> Label encoder for my target <br>
+4-->make npz i)-train.npz<br>
+             ii)-test.npz<br>
+            iii)-transformer.pkl<br>
+            iv)-targetencoder.pkl<br>
+Saving the seriallized object into artifacts folder<br>
 
-### DATA TRAINING PIPELINE
-1-->transformed data from the `data transformation pipeline`
-2-->XGBClassifier TAINING without HP tuning
-3-->checking for overfitting for the model
-4--> saving the serialized pkl object into artifacts directory
+### DATA TRAINING PIPELINE<br>
+1-->transformed data from the `data transformation pipeline`<br>
+2-->XGBClassifier TAINING without HP tuning<br>
+3-->checking for overfitting for the model<br>
+4--> saving the serialized pkl object into artifacts directory<br>
 
-### MODEL EVALUATION PIPELINE
-In this pipeline the main aim is to get the latest directory from the artifacts directory 
-compare the previous model score with latest model score THATS IT
+### MODEL EVALUATION PIPELINE<br>
+In this pipeline the main aim is to get the latest directory from the artifacts directory <br>
+compare the previous model score with latest model score THATS IT<br>
 
-### MODEL PUSHER PIPELINE
-This pipeline is responsible for storing the latest model,latest encoder file into `saved_models/counter/model/model.pkl`
+### MODEL PUSHER PIPELINE<br>
+This pipeline is responsible for storing the latest model,latest encoder file into `saved_models/counter/model/model.pkl`<br>
 
-### BATCH PREDICTION PIPELINE
+### BATCH PREDICTION PIPELINE<br>
 According to the user input we can able to upload the `filename.csv` file in which we can able to predict the class of the batch data and save it as the local file.
