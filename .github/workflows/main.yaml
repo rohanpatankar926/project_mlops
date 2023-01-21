@@ -2,8 +2,7 @@ name: sensor-fault-detection-automated-pipeline
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
 
 permissions:
   id-token: write
