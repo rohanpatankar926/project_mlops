@@ -8,7 +8,7 @@ from airflow.operators.bash import BashOperator
 
 default_args = {
     "owner": "airflow",
-    "depends_on_past": False,
+    "depends_on_spast": False,
     "start_date": pendulum.datetime(2023, 1, 9),
     "email": ["rohanpatankar926@gmail.com"]
 }
@@ -19,7 +19,7 @@ def training(**kwargs):
     training.start_training_pipeline()
 
 def sync_data_to_s3_bucket(**kwargs):
-    bucket_name="sensor-data"
+    bucket_name="sensorbucket98866"
     os.system(f"aws s3 sync /sensor/artifacts s3://{bucket_name}/artifacts")
     os.system(f"aws s3 sync /sensor/saved_models s3://{bucket_name}/saved_models")
 
