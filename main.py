@@ -1,23 +1,19 @@
-from sensor.pipeline import training
-from sensor.exception import SensorException
-from sensor.pipeline import batch_prediction
-import sys
+from sensor.pipeline import simple_pipeline,batch_pred
 
-print(__name__)
+def run_pipeline(file_path=None):
+    if file_path is None:
+        try:
+            pipeline=simple_pipeline.pipeline_inititate()
+            return "pipeline ran successful"
+        except Exception as e:
+            raise e
+    else:
+        try:
+            output_file=batch_pred.start_batch_data_predsiction(input_file_path=file_path)
+            print(output_file)
+            return output_file
+        except Exception as e:
+            raise e
 
-input_func_name="training"
-
-def main():
-    try:
-        if input_func_name=="training":
-            run_train=training.start_training_pipeline()
-            return run_train
-        elif input_func_name=="batch_pred":
-            input_file_path=str(input("Enter the file path: "))
-            run_batch=batch_prediction.start_batch_prediction(input_file_path=input_file_path)
-            return run_batch
-    except Exception as e:
-        raise SensorException(e,sys)
-
-if __name__ == "__main__":
-    main()
+if __name__=="__main__":
+    run_pipeline()

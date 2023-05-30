@@ -15,9 +15,9 @@ def download_files(**kwargs):
     os.system(f"aws s3 sync s3://{bucket_name}/input_files /sensor/input_files")
 
 def batch_prediction(**kwargs):
-    from sensor.pipeline import batch_prediction
+    from sensor.pipeline import batch_pred
     for file_name in os.listdir(input_dir):
-        batch_prediction.start_batch_prediction(input_file_path=os.path.join(input_dir,file_name))
+        batch_pred.start_batch_data_predsiction(input_file_path=os.path.join(input_dir,file_name))
 
 def sync_prediction_to_s3_bucket(**kwargs):
     os.system(f"aws s3 sync /sensor/prediction s3://{bucket_name}/prediction")
@@ -44,4 +44,3 @@ with DAG(
     success=BashOperator(task_id="success",bash_command=bash_success)
 
     download_input_files>>generate_prediction_files>>sync_prediction_files>>success
-

@@ -15,12 +15,12 @@ default_args = {
 
 
 def training(**kwargs):
-    from sensor.pipeline import training
-    training.start_training_pipeline()
+    from sensor.pipeline import simple_pipeline
+    simple_pipeline.pipeline_inititate()
 
 def sync_data_to_s3_bucket(**kwargs):
     bucket_name="sensorbucket98866"
-    os.system(f"aws s3 sync /sensor/artifacts s3://{bucket_name}/artifacts")
+    os.system(f"aws s3 sync /sensor/artifacts s3://{bucket_name}/artifacts/")
     os.system(f"aws s3 sync /sensor/saved_models s3://{bucket_name}/saved_models")
 
 bash_success="echo 'Training Pipeline is completed successfully'"

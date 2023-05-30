@@ -91,3 +91,203 @@ This pipeline is responsible for storing the latest model,latest encoder file in
 
 ### BATCH PREDICTION PIPELINE<br>
 According to the user input we can able to upload the `filename.csv` file in which we can able to predict the class of the batch data and save it as the local file.
+
+
+
+
+
+data ingestion
+
+1.collect from db to local gather 
+2.data validation-->dropping the m.v,outlier detectioon,missmatch 
+3.data transformation-->
+data bricks--> spark
+azure ml studio
+sagemaker 
+gcp deeplearning studio
+
+1--->simple impute +robust scaler +smote analysis
+
+for eve
+ry pieplien we have i/p and o/p 
+
+di->output -->complete data
+dv--> i/p -> complete data o/p-->valdiated data
+dt-> i/p-->validated data o/p->transformed data
+dm-> i/p->transformed o/p-->model score and test and train score
+
+
+for every particular training we will keep track of model.pkl
+
+1-train-->99%-->model.pkl
+2-train--95% -->model.pkl
+3-train-->94% -->model.pkl
+4-train-->99.5%-->modedl
+
+1 train acc <2nd accuracy --> 1accuracy
+
+train acc-0.9 test acc 0.8 diff 0.1 ---> rejecting the model which is overfitted
+train accc 0.9 test acc 0.95 -> 0.05 --> false --> continue the pipeline 
+
+loaded numpy array of train and test which was generated from data tranformation
+sopliited the data as dep adn independent
+fit the data on xgb
+y_hat=model.pred(x_test)
+f1_score(y_train,y_test)
+
+
+-->training we got pickle file,f1_score train va,f1score test value
+
+model.pkl
+
+
+model resolver method
+
+<!-- artifacts---> datatime--> data ingestion
+           datatime-->  data validation -->
+
+
+            datatime-->data trans  --> tranformed object ,pipeline object ,label encoder obj.pkl
+           datatime-->  data training  --> output model.pkl
+
+model resolver to evaluate our pipeline
+
+1stime time training
+we need to take the latest training artifacts and then store that artifacts traiend one inside the new directors saved_models dir
+
+2nd time training
+i will compare with the latest model directory of artifact and compare the models with saved_model-dir the delete the previous model and then or copy the atifacts generated model and then paste to saved_model_dir
+
+artifacts/datetime/all the outputs
+
+datetime --- .
+    first list all the directories of artifacts
+
+20230101
+20230202
+20230303
+
+get the maximum value of the data director
+convert the sting to int and then get th e maximum no of that
+
+get_latest_model_path
+
+saved_model/0/all the pickle files
+saved_model/1/all the pickle files
+saved_model/2/all the pickle files
+
+
+it will just take all the particular model from artifacts that too latest one and then save that model to my saved_model directory in terms of counterwise
+
+artifcats/latest_dir/models --> latest_model
+
+saved_models/0 -> previous model
+saved_model/1 ---> previous models
+
+saved_model/2--> new_model
+
+
+
+software:v1 
+ci.cd 
+
+
+software  --> push to github --> ftrom github git action will trigger and the steps will take place and will deploy the complete app to the target saved
+
+        ,v2,v3
+
+
+
+
+
+sync--->collect data --> preprocessing->transformation->model building --> model saving --> success message --->email 
+
+echo "success"
+Email opera
+
+pythonoperator and bash operator
+
+wanted to send local data to cloud s3 bucket 
+
+aws s3 sync local_dir to s3_bucket 
+aws s3 s3://data/data to data/
+
+iam roles in aws
+aws data center
+mumbai s1 s2 s3 s4-->ap-south-1
+kolkatta
+osaka 
+usa 
+ohio
+identity and  access management  global ser 
+access key
+secret access key 
+
+
+
+1--> data/artifacts --->local sytem root dir
+
+local data dir to s3 bucket--> problem statement 
+
+configuration
+iam roles 
+access key
+secret access key
+region name
+
+configure 
+
+configured 
+
+
+
+ec2--->vm setup
+ecr repository-->elastic container
+ecs-->
+
+ecr-->ecs---ec2
+s3--> 
+github actions-->
+
+application  manual deployment
+
+ci.cd pipeline
+
+.github/workflows/cicd.yaml
+application local --- push github ---->cloud deployments
+
+github runners
+
+connection between github to ec2 machine
+artifacts
+saved_models
+
+link-->open 
+
+iam  --> 5 members in your team 
+lead developer
+
+3 devops engineer 2 fs dev
+
+ec2 and s3 
+
+iam 
+
+
+ecr and ecs
+
+iam -->user1 user2 user3  -->group --> policies for access to ecr and ecs --->access key and secret access key
+
+ecr repository
+
+
+
+aws login--->build the docker image-->deploy this docker image to ecr(elastic container registry) repository---->ecs repositorty---->connecting a ec2 machine and run the docker file over ec2 machine-->exposed host and port keys---> i need to change the configure the credential of ec2 machine and make the host as to all traffic and i can abble to open the link and access the apache airflow on cloud
+
+apache airflow open a link---> 2 dags   
+                            i) sensor from feature store to saved_models
+                            ii) own data to saved_models
+i) dag if i run 1st dag saved_model and artifacts get generated from this i directly deploy this 2 directories to s3 bucket
+
+ii)i need to have already the new data on my s3 bucket--->we fetch the data from s3 bucket and from s3 bucket-->start running a pipeline for a new data --> prediction.csv file will be generated 
+171 columns --> extra columns prediction column --> 172 columns --> deploy this predictions.csv data to same s3 bucket with dir name as prediction

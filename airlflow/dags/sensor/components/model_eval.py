@@ -1,3 +1,6 @@
+import sys
+import os
+sys.path.append(os.getcwd())
 from sensor.predictor import ModelResolver
 from sensor.entity import config_entity
 from sensor.entity import artifacts_entity
@@ -5,8 +8,7 @@ from sensor.logger import logging
 from sensor.utils import load_object
 from sklearn.metrics import f1_score
 import pandas as pd
-import sys
-import os
+
 from sensor.config import TARGET_COLUMN
 from sensor.exception import SensorException
 
@@ -48,7 +50,6 @@ class ModelEvaluation(object):
             current_transformer=load_object(self.data_transformation_artifact.transformed_object_path)
             current_model=load_object(self.model_trainer_artifact.model_path)
             current_target_encoder=load_object(self.data_transformation_artifact.target_encoder_path)
-            
             test_df=pd.read_csv(self.data_ingestion_artifact.test_file_path)
             target_df=test_df[TARGET_COLUMN]
             

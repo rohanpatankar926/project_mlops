@@ -10,7 +10,7 @@ from sklearn.metrics import f1_score
 
 def fine_tune():
     try:
-        #fine tune the model using grid search
+        #fine tune the modesl using grid search
         pass
     except Exception as e:
         raise SensorException(e,sys)
@@ -67,3 +67,5 @@ class ModelTrainer:
             return model_trainer_artifact
         except Exception as e:
             raise SensorException(e,sys)
+        
+
